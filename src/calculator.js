@@ -3,7 +3,6 @@ function add(numbers){
 	if(numbers == ""){
 		return 0;
 	}
-
 	if(numbers.startsWith("//")){
 		var delimeter =  numbers.charAt(2);
 		//make the number start after new line
@@ -16,7 +15,12 @@ function add(numbers){
 		numbers = clean;
 	}
 	if(numbers.includes("\n")){
-		numbers = numbers.replace("\n", ",")
+		var number;
+		for(let i = 0; i < numbers.length; i++){
+			if(numbers.charAt(i) === "\n"){
+				numbers = numbers.replace("\n", ",");
+			}
+		}
 	}
 
 	if(numbers.includes(",")){
@@ -43,5 +47,4 @@ function add(numbers){
 		return parseInt(numbers);
 	}
 }
-add("//;\n1;2");
 module.exports = add;
