@@ -32,3 +32,7 @@ it("Should return sum of new line", () => {
 it("should return Error if negative", () => {
     expect(add("1,-3")).toBe("Negatives not allowed: -3");
 }); 
+
+it("should be able to handle multiple negatives" , () => {
+    expect(add("1,-3, 5, -7")).toBe("Negatives not allowed: -3 -7");
+}); 
