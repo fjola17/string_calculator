@@ -16,3 +16,7 @@ it("should return sum of two given numbers", () => {
 it("should sum multiple numbers", () => {
     expect(add("1,2,3")).toBe(6);
 });
+
+it("should be able to be able to handle unknown arguments of numbers", () => {
+    expect(add("1,2,3,4,5")).toBe(15);
+});
