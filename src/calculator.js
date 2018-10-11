@@ -3,27 +3,24 @@ function add(numbers){
 	if(numbers == ""){
 		return 0;
 	}
+	var clean = numbers;
 	if(numbers.startsWith("//")){
 		var delimeter =  numbers.charAt(2);
 		//make the number start after new line
-		var clean = numbers.substring(4);
-		for(let i = 0; i < clean.length; i++){
-			if(clean.charAt(i) === delimeter){
-				clean = clean.replace(delimeter, ",");
-			}
-		}
-		numbers = clean;
+		clean = numbers.substring(4);
 	}
 	if(numbers.includes("\n")){
-		var number;
-		for(let i = 0; i < numbers.length; i++){
-			if(numbers.charAt(i) === "\n"){
-				numbers = numbers.replace("\n", ",");
-			}
+		var ndelimeter = "\n";
+	}
+	for(let i = 0; i < clean.length; i++){
+		if(clean.charAt(i) === delimeter){
+			clean = clean.replace(delimeter, ",");
+		}
+		else if(clean.charAt(i) == ndelimeter){
+			clean = clean.replace(ndelimeter, ",");
 		}
 	}
-
-	if(numbers.includes(",")){
+	numbers = clean;
 		var numberArray = numbers.split(",");
 		var total = 0;
 		var negatives = "Negatives not allowed:";
@@ -42,9 +39,5 @@ function add(numbers){
 			return negatives;
 		}
 		return total;
-	}
-	else{
-		return parseInt(numbers);
-	}
 }
 module.exports = add;
