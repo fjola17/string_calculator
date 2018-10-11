@@ -34,7 +34,7 @@ it("should return Error if negative", () => {
 }); 
 
 it("should be able to handle multiple negatives" , () => {
-    expect(add("1,-3,5,-7")).toBe("Negatives not allowed: -3 -7");
+    expect(add("1,-3,5,-7")).toBe("Negatives not allowed: -3,-7");
 }); 
 
 it("Should ignore numbers larger than 1000", () => {

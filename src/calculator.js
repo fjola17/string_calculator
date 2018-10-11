@@ -1,43 +1,45 @@
 //calculator.js
 function add(numbers){
+	//if string is empty
 	if(numbers == ""){
 		return 0;
 	}
-	var clean = numbers;
+	//if number starts with // a delimeter is found
 	if(numbers.startsWith("//")){
 		var delimeter =  numbers.charAt(2);
 		//make the number start after new line
-		clean = numbers.substring(4);
+		numbers = numbers.substring(4);
 	}
+	//if the number has a new line
 	if(numbers.includes("\n")){
 		var ndelimeter = "\n";
 	}
-	for(let i = 0; i < clean.length; i++){
-		if(clean.charAt(i) === delimeter){
-			clean = clean.replace(delimeter, ",");
+	//loops through to replace the delimeter
+	for(i = 0; i < numbers.length; i++){
+		if(numbers.charAt(i) === delimeter){
+			numbers = numbers.replace(delimeter, ",");
 		}
-		else if(clean.charAt(i) == ndelimeter){
-			clean = clean.replace(ndelimeter, ",");
+		else if(numbers.charAt(i) == ndelimeter){
+			numbers = numbers.replace(ndelimeter, ",");
 		}
 	}
-	numbers = clean;
-		var numberArray = numbers.split(",");
-		var total = 0;
-		var negatives = "Negatives not allowed:";
-		var negativeNumbers = 0;
-		for(i = 0; i < numberArray.length; i++){
-			if(parseInt(numberArray[i]) > 1000){
-				continue;
-			}
-			total += parseInt(numberArray[i]);
-			if(Math.sign(numberArray[i]) == -1){
-				negatives += " " +numberArray[i];
-				negativeNumbers++;
-			}
-		}
-		if(negativeNumbers > 0){
-			return negatives;
-		}
-		return total;
+	var numberArray = numbers.split(",");
+	var total = 0;
+	//filter numbers larger than 1000
+	numberArray = numberArray.filter(largeNumbers => largeNumbers < 1000);
+	//filter negative numbers out
+	var negatives = numberArray.filter(negativeNumbers => negativeNumbers < 0);
+
+	//check numbers
+	for(i = 0; i < numberArray.length; i++){
+		total += parseInt(numberArray[i]);
+	}
+	//if there are negative numbers this should execute
+	if(negatives.length > 0){
+		return "Negatives not allowed: " + negatives;
+	}
+	//returning total sum
+	return total;abb5c41b9b6ae426f768340336b1a5d158928fb8
+
 }
 module.exports = add;
