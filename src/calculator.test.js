@@ -28,3 +28,7 @@ it("should return sum of array if a new line is added", () => {
 it("Should return sum of new line", () => {
     expect(add("1\n3")).toBe(4);
 });
+
+it("should return Error if negative", () => {
+    expect(add("1,-3")).toBe("Negatives not allowed: -3");
+}); 
