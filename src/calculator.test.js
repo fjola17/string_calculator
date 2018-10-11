@@ -43,3 +43,7 @@ it("Should ignore numbers larger than 1000", () => {
 it("Should be able to handle a different delimeter", () => {
     expect(add("//;\n1;2")).toBe(3);
 });
+
+it("Should also work with previous delimeters", () => {
+    expect(add("//;\n1;2,3\n4")).toBe(10);
+});
