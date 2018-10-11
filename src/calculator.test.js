@@ -24,3 +24,7 @@ it("should be able to be able to handle unknown arguments of numbers", () => {
 it("should return sum of array if a new line is added", () => {
     expect(add("1\n2,3")).toBe(6);
 });
+
+it("Should return sum of new line", () => {
+    expect(add("1\n3")).toBe(4);
+});
