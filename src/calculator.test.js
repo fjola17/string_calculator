@@ -40,3 +40,6 @@ it("should be able to handle multiple negatives" , () => {
 it("Should ignore numbers larger than 1000", () => {
     expect(add("2,1020")).toBe(2);
 });
+it("Should be able to handle a different delimeter", () => {
+    expect(add("//;\n1;2")).toBe(3);
+});

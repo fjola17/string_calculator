@@ -3,10 +3,22 @@ function add(numbers){
 	if(numbers == ""){
 		return 0;
 	}
+
+	if(numbers.startsWith("//")){
+		var delimeter =  numbers.charAt(2);
+		//make the number start after new line
+		var clean = numbers.substring(4);
+		for(let i = 0; i < clean.length; i++){
+			if(clean.charAt(i) === delimeter){
+				clean = clean.replace(delimeter, ",");
+			}
+		}
+		numbers = clean;
+	}
 	if(numbers.includes("\n")){
 		numbers = numbers.replace("\n", ",")
-
 	}
+
 	if(numbers.includes(",")){
 		var numberArray = numbers.split(",");
 		var total = 0;
@@ -31,5 +43,5 @@ function add(numbers){
 		return parseInt(numbers);
 	}
 }
-
+add("//;\n1;2");
 module.exports = add;
