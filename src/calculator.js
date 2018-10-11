@@ -10,10 +10,11 @@ function add(numbers){
 	if(numbers.includes(",")){
 		var numberArray = numbers.split(",");
 		var total = 0;
+		var negatives = "Negatives not allowed: "
 		for(i = 0; i < numberArray.length; i++){
 			total += parseInt(numberArray[i]);
 			if(Math.sign(numberArray[i]) == -1){
-				return "Negatives not allowed: " + numberArray[i];
+				return negatives  + numberArray[i];
 			}
 		}
 		return total;
