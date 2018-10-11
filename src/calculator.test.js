@@ -20,3 +20,7 @@ it("should sum multiple numbers", () => {
 it("should be able to be able to handle unknown arguments of numbers", () => {
     expect(add("1,2,3,4,5")).toBe(15);
 });
+
+it("should return sum of array if a new line is added", () => {
+    expect(add("1\n2,3")).toBe(6);
+});

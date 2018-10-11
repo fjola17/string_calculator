@@ -3,6 +3,20 @@ function add(numbers){
 	if(numbers == ""){
 		return 0;
 	}
+	if(numbers.includes("\n")){
+		var number = numbers.split("\n");
+		var total = 0;
+		for(i = 0; i < number.length; i++){
+			if(number[i].includes(",")){
+				var numberArray = number[i].split(",");
+				for(j = 0; j < numberArray.length; j++){
+					total += parseInt(numberArray[i]);
+				}
+			}			
+		}
+		return total;
+
+	}
 	if(numbers.includes(",")){
 		var numberArray = numbers.split(",");
 		var total = 0;
